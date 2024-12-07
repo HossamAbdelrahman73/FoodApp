@@ -1,0 +1,17 @@
+.active {
+  background-color: #0092471a;
+  position: relative;
+  color: white;
+}
+.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #009247;
+}
+ul li a span {
+  color: rgba(255, 255, 255, 0.907);
+}

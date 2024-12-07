@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.header {
+  background-image: url("../../../assets/Rectangle.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // height: 50vh;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding-block: 20px;
+}
+
+.mat-mdc-menu-item .mat-icon-no-color,
+.mat-mdc-menu-item .mat-mdc-menu-submenu-icon {
+  --mat-menu-item-icon-color: none;
+  // color: transparent;
+  color: var(red);
+}
+
+.mat-icon {
+  fill: rgb(215 31 31 / 87%);
+  // color: /;
+}
+
+// .text-[#009247] {
+//   color: #009247 !important;
+// }

@@ -1,0 +1,19 @@
+.mat-mdc-dialog-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: normal;
+  border-bottom: 2px solid rgba(206, 206, 206, 0.941);
+  margin-bottom: 20px;
+}
+
+.mdc-dialog__actions {
+  min-height: 0 !important;
+  margin: 10px !important;
+  color: #fff;
+  border-radius: 8px !important;
+  padding: 0px;
+}
+.mat-mdc-button.mat-unthemed {
+  --mdc-text-button-label-text-color: #fff;
+}

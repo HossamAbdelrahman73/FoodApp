@@ -1,0 +1,104 @@
+<section class="p-5 h-[700px]">
+  <div class="container">
+    <div class="flex justify-end">
+      <mat-icon (click)="onNoClick()" class="text-red-600 cursor-pointer"
+        >cancel</mat-icon
+      >
+    </div>
+    <div class="my-2">
+      <div>
+        <img src="../../../assets/4 4.svg" class="w-[30%] mx-auto" alt="" />
+      </div>
+
+      <h2 class="font-[700] text-[25px] text-[#494949]">
+        Update Profile {{ data.userName }}
+      </h2>
+
+      <p class="mb-2">Profile details below</p>
+    </div>
+
+    <form
+      class="example-form"
+      [formGroup]="updateProfile"
+      (ngSubmit)="sendData()"
+    >
+      <mat-form-field class="w-full">
+        <mat-label>User Name</mat-label>
+        <input
+          formControlName="userName"
+          type="text"
+          matInput
+          placeholder="User Name"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Email</mat-label>
+        <input
+          formControlName="email"
+          type="email"
+          matInput
+          placeholder="Email"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Country</mat-label>
+        <input
+          formControlName="country"
+          type="text"
+          matInput
+          placeholder="Country"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Phone Number</mat-label>
+        <input
+          formControlName="phoneNumber"
+          type="tel"
+          matInput
+          placeholder="Phone Number"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          formControlName="confirmPassword"
+          type="text"
+          matInput
+          placeholder="Confirm Password"
+        />
+      </mat-form-field>
+
+      <ngx-dropzone (change)="onSelect($event)">
+        <ngx-dropzone-label>upload image!</ngx-dropzone-label>
+        <ngx-dropzone-image-preview
+          ngProjectAs="ngx-dropzone-preview"
+          *ngFor="let f of files"
+          [file]="f"
+          [removable]="true"
+          (removed)="onRemove(f)"
+        >
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
+
+      <div class="flex my-2 justify-end items-center gap-3">
+        <button
+          type="button"
+          mat-stroked-button
+          routerLink="../"
+          style="background-color: white; color: red"
+        >
+          Cancel
+        </button>
+        <button
+          [disabled]="updateProfile.invalid"
+          type="submit"
+          [mat-dialog-close]="data"
+          mat-raised-button
+          style="background-color: #009247; color: white"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

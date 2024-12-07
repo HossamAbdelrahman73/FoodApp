@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.main-color {
+  color: #4aa35a;
+}
+
+.dark-gray {
+  color: #3a3a3d;
+}
+.light-gray {
+  color: rgba(74, 74, 74, 0.6);
+}
+
+section {
+  height: 100vh;
+  background-image: url("../../../../assets/Group 48101665.png");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+}

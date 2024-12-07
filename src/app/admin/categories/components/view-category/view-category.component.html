@@ -1,0 +1,19 @@
+<div mat-dialog-content class="p-3 w-[500px] h-[200px]">
+  <div class="flex justify-between items-center mb-5">
+    <h2 class="font-[700] text-[25px] text-[#494949]">View Category</h2>
+
+    <!-- <button mat-button> -->
+    <mat-icon (click)="onNoClick()" class="text-red-600 cursor-pointer"
+      >cancel</mat-icon
+    >
+    <!-- </button> -->
+  </div>
+
+  <div class="">
+    <mat-form-field class="w-full">
+      <mat-label class="">Category Name</mat-label>
+      <input [value]="val" class="w-full" matInput disabled />
+    </mat-form-field>
+  </div>
+</div>
+<!-- cdkFocusInitial -->

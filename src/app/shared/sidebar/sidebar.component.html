@@ -1,0 +1,28 @@
+<!-- <section class="col-span-2"> -->
+<section class="bg-[#1F263E] h-full pt-8 rounded-tr-[56px]">
+  <div class="flex flex-col justify-start gap-16">
+    <div class="mx-5">
+      <img src="./assets/3.png" alt="" />
+    </div>
+    <ul class="flex text-[#cbcbcb] flex-col justify-center gap-4">
+      <ng-container *ngFor="let item of menu">
+        <li
+          [routerLink]="item.url"
+          routerLinkActive="active"
+          i
+          class="py-3 px-7 cursor-pointer"
+          *ngIf="item.Active"
+        >
+          <a class=""
+            ><span
+              ><i class="fa-lg pe-[2px] fa-solid" [class]="item.icon"></i
+            ></span>
+            {{ item.text }}</a
+          >
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</section>
+
+<!-- </section> -->

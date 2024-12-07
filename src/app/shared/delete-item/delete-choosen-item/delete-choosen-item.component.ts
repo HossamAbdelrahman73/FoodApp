@@ -1,0 +1,19 @@
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AddEditCategoryComponent } from 'src/app/admin/categories/components/add-edit-category/add-edit-category.component';
+
+@Component({
+  selector: 'app-delete-choosen-item',
+  templateUrl: './delete-choosen-item.component.html',
+  styleUrls: ['./delete-choosen-item.component.scss'],
+})
+export class DeleteChoosenItemComponent {
+  constructor(
+    public dialogRef: MatDialogRef<AddEditCategoryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}

@@ -1,0 +1,67 @@
+<section>
+  <div class="container">
+    <div class="flex justify-end bg-slate-300 rounded-[16px] my-2">
+      <button
+        id="dropdownDefaultButton"
+        data-dropdown-toggle="dropdown"
+        class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+        type="button"
+      >
+        <div class="flex justify-center items-center">
+          <span class="w-full">
+            <img src="./assets/Ellipse 235.svg" alt="" /> </span
+          ><span class="ms-2">{{ userName() }}</span>
+        </div>
+        <svg
+          class="w-2 h-2 ms-1"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        id="dropdown"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer"
+          aria-labelledby="dropdownDefaultButton"
+        >
+          <li (click)="openProfile()">
+            <a
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              ><span><i class="fa-solid fa-user"></i> </span> Profile</a
+            >
+          </li>
+          <li>
+            <a
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              (click)="openDialog()"
+              ><span><i class="fa-solid fa-unlock"></i></span> Change
+              Password</a
+            >
+          </li>
+
+          <li (click)="logOut()">
+            <a
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              ><span><i class="fa-solid fa-right-from-bracket"></i></span>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

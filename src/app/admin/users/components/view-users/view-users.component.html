@@ -1,0 +1,55 @@
+<section class="p-5">
+  <div class="container">
+    <div class="flex justify-end my-3 text-center">
+      <mat-icon (click)="onNoClick()" class="text-red-600 cursor-pointer"
+        >cancel</mat-icon
+      >
+    </div>
+
+    <div
+      class="w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div class="text-center">
+        <ng-container *ngIf="data.item.imagePath; else notfoundimg">
+          <img
+            [src]="data.url + data.item.imagePath"
+            class="w-[150px] h-[150px] rounded-md mx-auto"
+            alt=""
+          />
+        </ng-container>
+        <ng-template #notfoundimg>
+          <img
+            class="w-[150px] h-[150px] rounded-md mx-auto"
+            src="../../../assets/Image_not_available.png"
+            alt=""
+          />
+        </ng-template>
+      </div>
+      <div class="p-5">
+        <a>
+          <h5
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            Account User
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Name: {{ data.item.userName }}
+        </p>
+
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Email: {{ data.item.email }}
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Phone: {{ data.item.phoneNumber }}
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Role: {{ data.item.group.name }}
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          modificationDate: {{ data.item.modificationDate | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

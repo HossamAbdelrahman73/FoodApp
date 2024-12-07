@@ -1,0 +1,107 @@
+<section>
+  <div class="container" *ngIf="editValueForm">
+    <div class="grid grid-cols-12 items-center header py-11 px-10">
+      <div class="col-span-8 text-white">
+        <div class="font-[400] text-[32px]">
+          <h2 class="font-[500] text-[24px] text-[#1F263E]">
+            Fill the <span class="font-[600] text-[#009247]"> Recipes </span> !
+          </h2>
+          <p class="w-[75%] font-[400] text-black text-[16px]">
+            you can now fill the meals easily using the table and form , click
+            here and sill it with the table !
+          </p>
+        </div>
+      </div>
+      <div class="col-span-4 flex justify-end">
+        <!-- <img src="../../../assets/eating a variety of foods-amico.png" alt="" /> -->
+        <button
+          type="button"
+          routerLink="../../"
+          class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          All Recipes <span><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+      </div>
+    </div>
+
+    <section class="p-20 pt-10">
+      <form
+        class="example-form"
+        [formGroup]="recipeForm"
+        (ngSubmit)="sendData()"
+      >
+        <mat-form-field class="w-full">
+          <mat-label>Recipe Name</mat-label>
+          <input
+            formControlName="name"
+            type="text"
+            matInput
+            placeholder="Recipe Name"
+          />
+        </mat-form-field>
+
+        <!-- style="height: 75px" -->
+        <mat-form-field class="w-full">
+          <mat-label>Tag</mat-label>
+          <mat-select formControlName="tagId">
+            <mat-option *ngFor="let tag of listTags" [value]="tag.id">{{
+              tag.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Price</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="price"
+            placeholder="350.99 EGP"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Category</mat-label>
+          <mat-select
+            placeholder="{{ categoryVal }}"
+            formControlName="categoriesIds"
+            [multiple]="true"
+          >
+            <mat-option *ngFor="let cat of listCategories" [value]="cat.id">{{
+              cat.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea
+            formControlName="description"
+            matInput
+            type="text"
+            placeholder="Description"
+          ></textarea>
+        </mat-form-field>
+
+        <div class="w-full">
+          <img
+            [src]="url + editValueForm.imagePath"
+            class="w-[150px] h-[150px] mx-auto"
+            alt=""
+          />
+        </div>
+
+        <div class="flex justify-end items-center gap-3">
+          <button
+            type="button"
+            mat-stroked-button
+            routerLink="../../"
+            style="background-color: white; color: red"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</section>

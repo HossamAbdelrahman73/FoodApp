@@ -1,0 +1,87 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-angular16-project-primary: mat.define-palette(mat.$indigo-palette);
+$my-angular16-project-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$my-angular16-project-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$my-angular16-project-theme: mat.define-light-theme((
+  color: (
+    primary: $my-angular16-project-primary,
+    accent: $my-angular16-project-accent,
+    warn: $my-angular16-project-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-angular16-project-theme);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// @import "flowbite";
+/* Default container styles */
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Small screens: less than 576px */
+@media (max-width: 575.98px) {
+  .container {
+    max-width: 100%;
+    padding: 0 10px; /* Reduce padding on smaller screens */
+  }
+}
+
+/* Medium screens: between 576px and 767px */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    max-width: 540px; /* Custom width for medium-sized screens */
+  }
+}
+
+/* Large screens: between 768px and 991px */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    max-width: 720px; /* Custom width for large screens */
+  }
+}
+
+/* Extra-large screens: between 992px and 1199px */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    max-width: 960px; /* Custom width for extra-large screens */
+  }
+}
+
+/* Extra-extra-large screens: 1200px and above */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px; /* Custom width for the largest screens */
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

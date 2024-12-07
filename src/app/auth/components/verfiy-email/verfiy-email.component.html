@@ -1,0 +1,84 @@
+<section>
+  <div class="w-[90%] rounded-2xl md:w-[50%] mx-auto bg-white sm:p-10 p-3">
+    <div class="">
+      <img src="./assets/4 4.svg" class="mx-auto" alt="" />
+    </div>
+
+    <h2 class="text-[#494949] font-bold text-[25px]">Verify Account</h2>
+    <p class="text-[#49494999]">Please Enter Your Otp or Check Your Inbox</p>
+
+    <form
+      [formGroup]="verifyForm"
+      (ngSubmit)="myVerification()"
+      class="mt-7 grid gap-4 sm:grid-cols-1 sm:gap-x-5 lg:gap-x-20"
+    >
+      <div class="flex">
+        <span
+          class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+        >
+          <i class="fa-regular fa-envelope"></i>
+        </span>
+        <input
+          [readOnly]="isReadonly"
+          formControlName="email"
+          type="email"
+          class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          placeholder="Email"
+        />
+      </div>
+
+      <div class="flex h-fit flex-col gap-1">
+        <div class="flex">
+          <span
+            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+          >
+            <i class="fa-solid fa-lock"></i>
+          </span>
+          <input
+            formControlName="code"
+            type="text"
+            class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            placeholder="OTP"
+          />
+        </div>
+
+        <div>
+          <div
+            class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+            role="alert"
+            *ngIf="
+              verifyForm.get('code')?.getError('required') &&
+              (verifyForm.get('code')?.touched || verifyForm.get('code')?.dirty)
+            "
+          >
+            <svg
+              class="flex-shrink-0 inline w-4 h-4 me-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Info</span>
+            <p>Code Required</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button
+          type="submit"
+          class="text-white bg-[#4AA35A] hover:bg-[#3b8749f6] font-bold text-[20px] rounded-lg text-sm px-5 w-[80%] py-2.5 me-2 mb-2 focus:outline-none"
+        >
+          send
+          <span *ngIf="spinVerfiy"
+            ><i class="ms-1 text-lg fa-solid fa-spinner fa-spin"></i
+          ></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

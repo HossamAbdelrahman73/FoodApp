@@ -1,0 +1,407 @@
+<section>
+  <!-- *ngIf="verfiy; else verfyForm" -->
+  <div class="container">
+    <div class="w-[100%] rounded-2xl md:w-[90%] mx-auto bg-white sm:p-10 p-3">
+      <div class="">
+        <img src="./assets/4 4.svg" class="mx-auto" alt="" />
+      </div>
+
+      <h2 class="text-[#494949] font-bold text-[25px]">Register</h2>
+      <p class="text-[#49494999]">Welcome Back! Please enter your details</p>
+
+      <div class="mt-2">
+        <ngx-dropzone class="" (change)="onSelect($event)">
+          <ngx-dropzone-label
+            >Upload Photo <i class="fa-solid fa-cloud-arrow-up"></i
+          ></ngx-dropzone-label>
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            *ngFor="let f of files"
+            [file]="f"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <!-- <ngx-dropzone-label
+                >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+              > -->
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+      </div>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="register()"
+        class="mt-7 grid gap-4 sm:grid-cols-2 sm:gap-x-5 lg:gap-x-20"
+      >
+        <div class="">
+          <div class="flex h-fit flex-col gap-1">
+            <div class="flex">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+              >
+                <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+              </span>
+              <input
+                formControlName="userName"
+                type="text"
+                class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                placeholder="UserName"
+              />
+            </div>
+            <div>
+              <div
+                class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert"
+                *ngIf="
+                  registerForm.get('userName')?.getError('required') &&
+                  (registerForm.get('userName')?.touched ||
+                    registerForm.get('userName')?.dirty)
+                "
+              >
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="sr-only">Info</span>
+                <p>UserName Required</p>
+              </div>
+              <div
+                class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert"
+                *ngIf="
+                  registerForm.get('userName')?.getError('pattern') &&
+                  (registerForm.get('userName')?.touched ||
+                    registerForm.get('userName')?.dirty)
+                "
+              >
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="sr-only">Info</span>
+                <p>
+                  The userName must contain characters and end with numbers
+                  without spaces.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex h-fit flex-col my-4 gap-1">
+            <div class="flex">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+              >
+                <i class="fa-solid fa-lock text-lg"></i>
+              </span>
+              <input
+                formControlName="country"
+                type="text"
+                class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Country"
+              />
+            </div>
+            <div class="">
+              <div
+                class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert"
+                *ngIf="
+                  registerForm.get('country')?.getError('required') &&
+                  (registerForm.get('country')?.touched ||
+                    registerForm.get('country')?.dirty)
+                "
+              >
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="sr-only">Info</span>
+                <p>country Required</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex h-fit flex-col gap-1 relative">
+            <div class="flex relative">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md"
+              >
+                <i class="fa-solid fa-lock text-lg"></i>
+              </span>
+              <input
+                formControlName="password"
+                [type]="eyepass ? 'password' : 'text'"
+                class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                placeholder="Password"
+              />
+              <span
+                (click)="eyepass = !eyepass"
+                class="absolute end-2 cursor-pointer top-2"
+                ><i
+                  [ngClass]="{
+                    'fa-eye': !eyepass,
+                    'fa-eye-slash': eyepass
+                  }"
+                  class="fa-solid hover:text-[#4aa35a]"
+                ></i
+              ></span>
+            </div>
+            <div>
+              <div
+                class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert"
+                *ngIf="
+                  registerForm.get('password')?.getError('required') &&
+                  (registerForm.get('password')?.touched ||
+                    registerForm.get('password')?.dirty)
+                "
+              >
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="sr-only">Info</span>
+                <p>password Required</p>
+              </div>
+            </div>
+            <div
+              class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+              role="alert"
+              *ngIf="
+                registerForm.get('password')?.getError('pattern') &&
+                (registerForm.get('password')?.touched ||
+                  registerForm.get('password')?.dirty)
+              "
+            >
+              <svg
+                class="flex-shrink-0 inline w-4 h-4 me-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                />
+              </svg>
+              <span class="sr-only">Info</span>
+              <p>
+                The password must include at least one lowercase letter, one
+                uppercase letter, one digit, one special character, and be at
+                least 6 characters long.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex h-fit flex-col gap-1">
+            <div class="flex">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+              >
+                <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+              </span>
+
+              <input
+                formControlName="email"
+                type="email"
+                class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Enter your E-mail"
+              />
+            </div>
+            <div
+              class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+              role="alert"
+              *ngIf="
+                registerForm.get('email')?.getError('email') &&
+                (registerForm.get('email')?.touched ||
+                  registerForm.get('email')?.dirty)
+              "
+            >
+              <svg
+                class="flex-shrink-0 inline w-4 h-4 me-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                />
+              </svg>
+              <span class="sr-only">Info</span>
+              <p>Invalid Email</p>
+            </div>
+            <div
+              class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+              role="alert"
+              *ngIf="
+                registerForm.get('email')?.getError('required') &&
+                (registerForm.get('email')?.touched ||
+                  registerForm.get('email')?.dirty)
+              "
+            >
+              <svg
+                class="flex-shrink-0 inline w-4 h-4 me-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                />
+              </svg>
+              <span class="sr-only">Info</span>
+              <p>Email Required</p>
+            </div>
+          </div>
+
+          <div class="flex h-fit my-4 flex-col gap-1">
+            <div class="flex">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+              >
+                <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+              </span>
+              <input
+                formControlName="phoneNumber"
+                type="text"
+                class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                placeholder="PhoneNumber"
+              />
+            </div>
+            <div>
+              <div
+                class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert"
+                *ngIf="
+                  registerForm.get('phoneNumber')?.getError('required') &&
+                  (registerForm.get('phoneNumber')?.touched ||
+                    registerForm.get('phoneNumber')?.dirty)
+                "
+              >
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="sr-only">Info</span>
+                <p>phoneNumber Required</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex h-fit flex-col gap-1 relative">
+            <div class="flex relative">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md"
+              >
+                <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+              </span>
+              <input
+                formControlName="confirmPassword"
+                [type]="eyerepass ? 'password' : 'text'"
+                class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-green-500 focus:border-green-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
+                placeholder="Confirm-Password"
+              />
+              <span
+                (click)="eyerepass = !eyerepass"
+                class="absolute end-2 cursor-pointer top-2"
+                ><i
+                  [ngClass]="{
+                    'fa-eye': !eyerepass,
+                    'fa-eye-slash': eyerepass
+                  }"
+                  class="fa-solid hover:text-[#4aa35a]"
+                ></i
+              ></span>
+            </div>
+            <div>
+              <div
+                class="flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert"
+                *ngIf="
+                  registerForm.get('confirmPassword')?.getError('required') &&
+                  (registerForm.get('confirmPassword')?.touched ||
+                    registerForm.get('confirmPassword')?.dirty)
+                "
+              >
+                <svg
+                  class="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+                <span class="sr-only">Info</span>
+                <p>Confirm Password Required</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-2 flex justify-end">
+          <p
+            class="text-[#4aa35a] font-medium cursor-pointer"
+            routerLink="/auth/login"
+          >
+            Login Now?
+          </p>
+        </div>
+        <div class="text-center col-span-2">
+          <button
+            type="submit"
+            class="text-white bg-[#4AA35A] hover:bg-[#3b8749f6] font-bold text-[20px] rounded-lg text-sm px-5 w-[80%] md:w-[60%] py-2.5 me-2 mb-2 focus:outline-none"
+            [disabled]="registerForm.invalid"
+          >
+            Register
+            <span *ngIf="spin"
+              ><i class="ms-1 text-lg fa-solid fa-spinner fa-spin"></i
+            ></span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ng-template #verfyForm -->
+  </div>
+</section>

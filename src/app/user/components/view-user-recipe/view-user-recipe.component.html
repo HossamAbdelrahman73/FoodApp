@@ -1,0 +1,36 @@
+<section class="p-5">
+  <div class="flex justify-between items-center">
+    <h1>Recipe Details</h1>
+    <mat-icon (click)="onNoClick()" class="text-red-600 cursor-pointer"
+      >cancel</mat-icon
+    >
+  </div>
+
+  <div class="my-4">
+    <ng-container *ngIf="data.item.imagePath; else notfoundimg">
+      <img
+        [src]="data.url + data.item.imagePath"
+        class="w-[150px] h-[150px] rounded-md mx-auto"
+        alt=""
+      />
+    </ng-container>
+    <ng-template #notfoundimg>
+      <img
+        class="w-[150px] h-[150px] rounded-md mx-auto"
+        src="../../../assets/Image_not_available.png"
+        alt=""
+      />
+    </ng-template>
+  </div>
+
+  <div class="flex flex-col gap-3 my-3">
+    <p>name: {{ data.item.name }}</p>
+    <p>price: {{ data.item.price }}</p>
+    <p>tag: {{ data.item.tag.name }}</p>
+    <p>category: {{ data.cat }}</p>
+    <p>
+      modificationDate: {{ data.item.modificationDate | date : "dd/MM/YYY" }}
+    </p>
+    <p>description: {{ data.item.description }}</p>
+  </div>
+</section>
