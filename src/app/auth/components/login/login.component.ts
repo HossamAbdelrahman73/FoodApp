@@ -19,8 +19,11 @@ export class LoginComponent {
     private spinner: NgxSpinnerService
   ) {}
   loginForm: FormGroup = this._FormBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    email: [
+      'hossam202110044@gmail.com',
+      [Validators.required, Validators.email],
+    ],
+    password: ['Zsacd1221@', [Validators.required]],
   });
 
   ngOnInit(): void {
