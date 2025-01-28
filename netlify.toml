@@ -1,0 +1,12 @@
+
+[build]
+  command = "ng build"
+  functions = "netlify/functions"
+  publish = "dist/my-angular16-project"
+
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+   vstatus = 200
+
+ 
